@@ -1,0 +1,114 @@
+@import "_const.scss";
+
+.details {
+    .details__product {
+        display: flex;
+        justify-content: space-around;
+        margin: 5rem 0;
+
+        &>div {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 50%;
+        }
+
+        img {
+            max-width: 400px;
+            min-width: 150px;
+            aspect-ratio: 1/1;
+            width: 50%;
+            height: 100%;
+            border: 1px solid gray;
+        }
+    }
+
+    .details__product--text {
+        h1 {
+            color: gray;
+            font-weight: bold;
+            margin-bottom: 2rem;
+            font-size: 1.5rem !important;
+        }
+
+        h2 {
+            font-size: 1.8rem !important;
+            font-weight: normal;
+            margin-bottom: 3rem;
+        }
+
+        h2,
+        p {
+            color: lighten(gray, 10%);
+        }
+    }
+
+    .details__product--price {
+        p {
+            font-size: 1.5rem !important;
+            font-weight: bold;
+            margin-bottom: 2rem;
+            color: gray;
+        }
+
+        button {
+            color: white;
+            background-color: $secondary;
+            padding: 0.5rem 2rem;
+            border-radius: 3rem;
+        }
+    }
+}
+
+@media (max-width: $tablet) {
+    .details {
+        .details__product {
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 0 2rem;
+
+            &>div {
+                width: 100%;
+            }
+
+            img {
+                width: 100%;
+                height: 100%;
+                max-width: 300px;
+                margin-bottom: 2rem;
+            }
+
+            .details__product--text {
+                h1 {
+                    font-size: 1.2rem !important;
+                    margin-bottom: 1rem;
+                }
+
+                h2 {
+                    font-size: 1.5rem !important;
+                    margin-bottom: 2rem;
+                }
+
+                h2,
+                p {
+                    font-size: 1rem !important;
+                }
+            }
+
+            .details__product--price {
+                p {
+                    font-size: 1.2rem !important;
+                    margin-bottom: 1rem;
+                    margin-top: 2rem;
+                }
+
+                button {
+                    font-size: 1rem !important;
+                    width: 100%;
+                }
+            }
+        }
+    }
+}

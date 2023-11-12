@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import "_reset.scss";
+@import "_home.scss";
+@import "_navbar.scss";
+@import "_footer.scss";
+@import 'bootstrap/dist/css/bootstrap.min.css';
+@import "_contact.scss";
+@import "_about.scss";
+@import "_register.scss";
+@import "_login.scss";
+@import "_shop.scss";
+@import "_details.scss";
+@import "_cart.scss";
+@import "_payment.scss";
+
+body {
+    overflow-x: hidden;
+    margin: 0;
+}
+
+main {
+    min-height: 100vh;
+}
+
+
+.page {
+    display: flex;
+    flex-direction: column;
+
+    main {
+        flex: 1;
+    }
+}

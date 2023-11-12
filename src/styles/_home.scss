@@ -1,0 +1,210 @@
+@import "_const.scss";
+
+.hero {
+    display: flex;
+    justify-content: space-between;
+
+    .hero__text {
+        background-color: $secondary;
+        padding: 3rem;
+        width: 50%;
+
+        div {
+            width: min-content;
+        }
+
+        h1,
+        h2,
+        p {
+            margin-bottom: -1rem;
+            color: white
+        }
+
+        h1 {
+            &:nth-child(1) {
+                font-size: 2rem !important;
+            }
+
+            &:nth-child(2) {
+                font-size: 6rem !important;
+                font-weight: normal;
+            }
+        }
+
+        h2 {
+            text-align: right;
+        }
+
+        p {
+            margin-top: 5rem;
+        }
+    }
+
+    .hero__carousel {
+        width: 50%;
+        object-fit: cover;
+    }
+}
+
+.strip {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    place-items: center;
+    margin: 2rem 0;
+
+    &>div {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .icon,
+    p {
+        color: grey;
+        font-size: 1.2rem !important;
+    }
+
+    .icon {
+        font-size: 5rem !important;
+
+        path {
+            color: $accent;
+        }
+    }
+}
+
+.body {
+    &>div {
+        display: flex;
+
+        &:nth-of-type(even) {
+            flex-direction: row-reverse;
+        }
+
+        &:nth-last-of-type(odd) {
+            background-color: $secondary;
+
+            h1,
+            p {
+                color: white
+            }
+        }
+
+        img {
+            width: 50%;
+        }
+
+        div {
+            width: 50%;
+            padding: 5rem;
+
+            h1 {
+                &:nth-child(1) {
+                    font-size: 1rem !important;
+                }
+
+                &:nth-child(2) {
+                    font-size: 3rem !important;
+                    font-weight: 600;
+                    margin-bottom: 2rem;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: $tablet) {
+    .hero {
+        flex-direction: column-reverse;
+        justify-content: space-between;
+
+        .hero__text {
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            width: 100%;
+
+            h1,
+            h2,
+            p {
+                margin-bottom: -0.5rem;
+            }
+
+            h1 {
+                &:nth-child(1) {
+                    font-size: 1rem !important;
+                }
+
+                &:nth-child(2) {
+                    font-size: 3rem !important;
+                    font-weight: 600;
+                }
+            }
+
+            h2 {
+                font-size: 1rem !important;
+            }
+
+            p {
+                margin-top: 2rem;
+            }
+        }
+
+        .hero__carousel {
+            width: 100%;
+
+            .carousel,
+            .carousel-item {
+                height: 400px;
+            }
+        }
+    }
+
+    .strip {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 2rem;
+    }
+
+    .body {
+        &>div {
+            flex-direction: column;
+
+            &:nth-of-type(even) {
+                flex-direction: column;
+            }
+
+            &:nth-last-of-type(odd) {
+
+                h1,
+                p {
+                    color: white
+                }
+            }
+
+            img {
+                width: 100%;
+            }
+
+            div {
+                width: 100%;
+                padding: 3rem;
+
+                h1 {
+                    &:nth-child(1) {
+                        font-size: 1rem !important;
+                    }
+
+                    &:nth-child(2) {
+                        font-size: 2rem !important;
+                        font-weight: 600;
+                        margin-bottom: 2rem;
+                    }
+                }
+            }
+        }
+    }
+}
