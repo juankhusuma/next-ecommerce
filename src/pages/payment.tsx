@@ -4,12 +4,12 @@ import { useAuthState } from "react-firebase-hooks/auth";
 
 export default function Payment() {
     const [user, loading, error] = useAuthState(auth);
-    const router = useRouter();
+    // const router = useRouter();
 
-    if (user === null) {
-        router.push("/login");
-        return <p>Redirecting...</p>
-    }
+    // if (user === null) {
+    //     router.push("/login");
+    //     return <p>Redirecting...</p>
+    // }
 
     return (
         <main className="payment">
