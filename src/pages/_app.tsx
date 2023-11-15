@@ -7,17 +7,18 @@ import { useState } from 'react';
 
 export default function App({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   const [cart, setCart] = useState([]);
+  const [amounts, setAmounts] = useState([]);
   return (
     <>
       <title>Fru Blom</title>
       <div className='page'>
         <Navbar />
-        {/* <CartContext.Provider value={{
+        <CartContext.Provider value={{
           cart,
           setCart
-        }}> */}
-        <Component {...pageProps} />
-        {/* </CartContext.Provider> */}
+        }}>
+          <Component {...pageProps} />
+        </CartContext.Provider>
         <Footer />
       </div>
     </>

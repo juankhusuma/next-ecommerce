@@ -1,10 +1,17 @@
 import Link from 'next/link'
 import { BsCart3 } from 'react-icons/bs'
 import { AiOutlineUser } from 'react-icons/ai'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { auth } from '@/lib/firebase';
 
 export default function Navbar() {
     const [open, setOpen] = useState(false);
+    const [
+        user,
+        loading,
+        error,
+    ] = useAuthState(auth);
     return (
         <nav className={`navbar ${open ? 'navbar__open' : 'navbar__close'}`}>
             <div className="navbar__container">
@@ -21,9 +28,9 @@ export default function Navbar() {
             <div className="navbar__container">
                 <ul>
                     <li className='navbar__container-icon'>
-                        <Link href="/">
+                        <Link href="/login">
                             <AiOutlineUser />
-                            <p>Min side</p>
+                            {(auth !== null && !loading && !error) ? <p>Min side</p> : <p>Logg inn</p>}
                         </Link>
                     </li>
                     <li className='navbar__container-icon'>

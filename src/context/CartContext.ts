@@ -1,7 +1,12 @@
 import { ProductProps } from "@/components/Product";
-import { createContext } from "vm";
+import { createContext } from "react";
+
+
+interface P extends ProductProps {
+    amount: number
+}
 
 export const CartContext = createContext({
-    cart: [] as ProductProps[],
+    cart: [] as P[],
     setCart: (cart: any) => { },
 });

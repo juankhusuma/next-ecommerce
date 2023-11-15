@@ -1,15 +1,27 @@
+import { auth } from "@/lib/firebase";
+import { useRouter } from "next/router";
+import { useAuthState } from "react-firebase-hooks/auth";
+
 export default function Payment() {
+    const [user, loading, error] = useAuthState(auth);
+    const router = useRouter();
+
+    if (user === null) {
+        router.push("/login");
+        return <p>Redirecting...</p>
+    }
+
     return (
         <main className="payment">
             <section className="payment__info">
                 <h1>Min Side</h1>
                 <div className="payment__info--item">
                     <div>
-                        <p>Navn: Stine</p>
+                        <p>Navn: {loading ? "Loading..." : user?.displayName}</p>
                         <p>Telefonnummer: +47 544 565 56</p>
                     </div>
                     <div>
-                        <p>Epost: e-post:stine@frublomdesign.no</p>
+                        <p>Epost: {loading ? "Loading..." : user?.email}</p>
                         <p>Address: Storgata 3, 1890 Rakkestad</p>
                     </div>
                 </div>
