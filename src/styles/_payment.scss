@@ -5,10 +5,19 @@
     display: flex;
     flex-direction: column;
 
+    input {
+        padding-left: 1rem;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+        margin-left: 0.5rem;
+        border: 1px solid gray;
+        border-radius: 1rem;
+    }
+
     .payment__info {
         border-bottom: 1px solid gray;
         margin-bottom: 2rem;
-        max-width: 700px;
+        padding: 0 5rem;
 
         h1 {
             margin-bottom: 2rem;
@@ -29,6 +38,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            width: 75%;
 
             p {
                 margin-bottom: 2rem;
@@ -44,16 +54,67 @@
             color: gray;
         }
 
-        .payment__table--history table {
+        table {
             width: 100%;
 
-            thead>tr:nth-child(1) {
+            thead {
+                td {
+                    background: $secondary;
+                    color: gray;
+                    font-weight: bold;
+                    text-align: center;
+                }
+            }
+
+            td {
+                padding: 1rem;
+                text-align: center;
+            }
+
+            tbody {
+                tr {
+                    &:nth-last-of-type(odd) {
+                        background-color: rgb(225, 225, 225);
+                    }
+                }
+            }
+
+            .date {
                 width: 25%;
             }
 
-            thead>tr:nth-child(2) {
-                width: 690px;
-                background: #000;
+            .price {
+                width: 75%;
+            }
+        }
+    }
+}
+
+@media (max-width: 1024px) {
+    .payment {
+        .payment__info {
+            padding: 0;
+
+            .payment__info--item {
+                width: 100%;
+                display: flex;
+                flex-direction: column !important;
+                align-items: flex-start !important;
+            }
+
+        }
+
+        .payment__table {
+            table {
+                thead {
+                    td {
+                        font-size: 0.8rem;
+                    }
+                }
+
+                td {
+                    font-size: 0.8rem;
+                }
             }
         }
     }

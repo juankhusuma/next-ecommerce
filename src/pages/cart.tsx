@@ -1,5 +1,6 @@
 import { CartContext } from '@/context/CartContext';
 import { auth } from '@/lib/firebase';
+import axios from 'axios';
 import { useRouter } from 'next/router';
 import { useContext, useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
@@ -9,10 +10,14 @@ export default function Cart() {
     const { cart, setCart } = useContext(CartContext);
     const [total, setTotal] = useState(0);
     const [user, loading, error] = useAuthState(auth);
+    const [loadingCart, setLoadingCart] = useState(false);
     const router = useRouter();
-    if (!loading && !user) {
-        router.push('/login');
-    }
+
+    useEffect(() => {
+        if (!user && !loading) {
+            router.push('/login');
+        }
+    }, [user, loading])
 
     useEffect(() => {
         setTotal(cart.reduce((acc, item) => {
@@ -31,17 +36,22 @@ export default function Cart() {
                     <p>Total</p>
                     <p>{total} kr</p>
                 </div>
-                {/* <div className='cart__info--price'>
-                    <p>Ftakt</p>
-                    <p>200 kr</p>
-                </div> */}
                 <div className='cart__info--total'>
-                    {/* <p>150 kr</p> */}
-                    <button>Betale</button>
+                    <button onClick={async () => {
+                        setLoadingCart(true);
+                        const { data } = await axios.post('/api/saveBill', { uid: user?.uid, price: total });
+                        setLoadingCart(false);
+                        console.log(data);
+                        if (data.success) {
+                            setCart([]);
+                            alert('Betalingen var vellykket')
+                            await router.push('/');
+                        }
+                    }}>{loadingCart ? "Loading" : "Betale"}</button>
                 </div>
             </section>
             <section className='cart__banner'>
-                <img src="/img/carousel/2.jpg" alt="img" />
+                <img src="/img/cart/1.jpg" alt="img" />
             </section>
         </main>
     )
@@ -58,7 +68,7 @@ function CartItem({ image, name, description, amount, price, index }: { image: s
                         <h1>{name}</h1>
                         <p>{price} kr</p>
                     </div>
-                    <p>{description}</p>
+                    <p>{description.length > 200 ? description.slice(0, 200) + "..." : description}</p>
                 </div>
                 <div className='item__content--action'>
                     <input type="number" value={amount} onChange={e => setCart(cart.map(p => {

@@ -58,6 +58,51 @@
             border-radius: 3rem;
         }
     }
+
+    .details__similiar {
+        margin: 5rem;
+
+        h1 {
+            font-size: 2rem !important;
+            margin-bottom: 3rem;
+            color: gray;
+        }
+
+        ul {
+            display: flex;
+            width: 100%;
+            overflow-x: scroll;
+            padding: 1rem;
+            gap: 2rem;
+
+            div {
+                padding: 1rem;
+                width: 300px;
+            }
+
+            img {
+                width: 100%;
+                aspect-ratio: 1/1;
+                border: 1px gray solid;
+                margin-bottom: 1rem;
+            }
+
+            h1 {
+                font-size: 1.5rem !important;
+                margin-bottom: 1rem;
+
+            }
+
+            button {
+                width: 100%;
+                background-color: $secondary;
+                padding: 0.5rem 2rem;
+                margin-top: 2rem;
+                border-radius: 3rem;
+                color: white !important
+            }
+        }
+    }
 }
 
 @media (max-width: $tablet) {

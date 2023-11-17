@@ -1,15 +1,41 @@
 import { auth } from "@/lib/firebase";
+import axios from "axios";
+import { updateCurrentUser, updateProfile } from "firebase/auth";
+import { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 
 export default function Payment() {
     const [user, loading, error] = useAuthState(auth);
-    // const router = useRouter();
+    const [data, setData] = useState([]);
+    const [name, setName] = useState('');
+    const [phone, setPhone] = useState('');
+    const [email, setEmail] = useState('');
+    const [address, setAddress] = useState('');
+    const router = useRouter();
+    const [loadingData, setLoadingData] = useState(false);
 
-    // if (user === null) {
-    //     router.push("/login");
-    //     return <p>Redirecting...</p>
-    // }
+
+    useEffect(() => {
+        (async () => {
+            if (!user && !loading) {
+                await router.push('/login');
+            }
+            if (!user) return;
+            const { data } = await axios.post('/api/getBill', { uid: user?.uid });
+            setData(data.data.data.purchases || []);
+            setName(user.displayName || '');
+            setEmail(user.email || '');
+
+            const { data: userData } = await axios.post('/api/getUser', { uid: user?.uid });
+            setPhone(userData.data.data.info.phone || '');
+            setAddress(userData.data.data.info.address || '');
+            console.log(userData)
+            console.log(data);
+        })()
+    }, [user, loading])
+
 
     return (
         <main className="payment">
@@ -17,15 +43,25 @@ export default function Payment() {
                 <h1>Min Side</h1>
                 <div className="payment__info--item">
                     <div>
-                        <p>Navn: {loading ? "Loading..." : user?.displayName}</p>
-                        <p>Telefonnummer: +47 544 565 56</p>
+                        <p>Navn: <input type="text" value={name} onChange={e => setName(e.target.value)} /></p>
+                        <p>Telefonnummer: <input type="tel" value={phone} onChange={e => setPhone(e.target.value)} /></p>
                     </div>
                     <div>
-                        <p>Epost: {loading ? "Loading..." : user?.email}</p>
-                        <p>Address: Storgata 3, 1890 Rakkestad</p>
+                        <p>Epost: {email}</p>
+                        <p>Address: <input type="text" value={address} onChange={e => setAddress(e.target.value)} /></p>
                     </div>
                 </div>
-                <button>Edit</button>
+                <button onClick={() => {
+                    setLoadingData(true);
+                    axios.post('/api/updateUser', { uid: user?.uid, phone, address }).then(({ data }) => {
+                        console.log(data);
+                        setLoadingData(false);
+                        if (data.success) {
+                            alert('Informasjonen ble oppdatert');
+                        }
+                    })
+                    updateProfile(user!, { displayName: name })
+                }}>{loadingData ? "Loading" : "Edit"}</button>
             </section>
             <section className="payment__table">
                 <h1>Bestillinger</h1>
@@ -37,9 +73,17 @@ export default function Payment() {
                         </tr>
                     </thead>
                     <tbody>
-                        <Order date="10/10/2021" price={100} />
-                        <Order date="10/10/2021" price={100} />
-                        <Order date="10/10/2021" price={100} />
+                        {
+                            data.map((item: any) => (
+                                <Order key={item.id} date={
+                                    new Date(item.createdAt).toLocaleDateString('en-US', {
+                                        day: 'numeric',
+                                        month: 'long',
+                                        year: 'numeric'
+                                    })
+                                } price={item.price} />
+                            ))
+                        }
                     </tbody>
                 </table>
             </section>
@@ -50,8 +94,8 @@ export default function Payment() {
 function Order({ date, price }: { date: string, price: number }) {
     return (
         <tr>
-            <td>{date}</td>
-            <td>{price} kr</td>
+            <td className="date">{date}</td>
+            <td className="price">{price} kr</td>
         </tr>
     )
 }

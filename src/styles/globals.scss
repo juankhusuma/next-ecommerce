@@ -20,8 +20,12 @@ body {
 
 main {
     min-height: 100vh;
+    margin: -15px;
 }
 
+a {
+    color: gray !important;
+}
 
 .page {
     display: flex;
@@ -29,5 +33,11 @@ main {
 
     main {
         flex: 1;
+    }
+}
+
+html {
+    @media (min-width: $extra-large) {
+        font-size: 1.2rem !important;
     }
 }

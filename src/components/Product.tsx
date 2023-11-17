@@ -18,19 +18,22 @@ export const Product: React.FC<ProductProps> = ({ id, image, description, name, 
         <div>
             <img src={image} alt={name} />
             <h1>{name}</h1>
-            <p>{description}</p>
+            <p>{description.length > 100 ? description.slice(0, 100) + "..." : description}</p>
             <p>{price} kr</p>
-            {(user !== null && !loading) && <button onClick={(e) => {
-                e.preventDefault();
-                // check if item is already in cart
-                const item = cart.find(i => i.id === id);
-                if (item) {
-                    // if item is in cart, remove it
-                    setCart(cart.filter(i => i.id !== id));
-                    return;
-                }
-                setCart([...cart, { id, name, description, price, image, amount: 1 }])
-            }}>{!cart.find(i => i.id === id) ? "Kjøp" : "Remove"}</button>}
+            {(user !== null && !loading) &&
+                <button
+                    onClick={(e) => {
+                        e.preventDefault();
+                        const item = cart.find(i => i.id === id);
+                        if (item) {
+                            setCart((cart: any) => cart.filter((i: any) => i.id !== id));
+                            return;
+                        }
+                        setCart((cart: any) => [...cart, { id, name, description, price, image, amount: 1 }])
+                    }}>
+                    {!cart.find(i => i.id === id) ? "Kjøp" : "Remove"}
+                </button>
+            }
         </div>
     )
 }

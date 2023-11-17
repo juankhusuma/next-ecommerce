@@ -30,7 +30,7 @@ export default function Login() {
                 <input type="submit" value={loading ? "Loading" : "Login"} />
                 <p>Ny for oss? Registrer <Link href="/register">her</Link></p>
             </form>
-            <img src="/img/carousel/3.jpg" alt="login" />
+            <img src="/img/login/1.jpg" alt="login" />
         </main>
     )
 }

@@ -1,5 +1,5 @@
 import { Product } from "@/components/Product";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { ProductProps } from "@/components/Product";
 import { GetServerSideProps } from "next";
 import { AiOutlineSearch } from 'react-icons/ai';
@@ -11,6 +11,7 @@ export default function Shop({ products, categories }: { products: P[], categori
     const [tag, setTag] = useState<string>("all");
     const [search, setSearch] = useState<string>("");
     const [filteredProducts, setFilteredProducts] = useState<ProductProps[]>(products);
+
     useEffect(() => {
         console.log(tag)
         if (tag === "all") {

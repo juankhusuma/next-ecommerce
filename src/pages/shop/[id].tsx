@@ -5,10 +5,10 @@ import { GetServerSideProps } from "next"
 import { useRouter } from "next/router"
 import { useContext } from "react"
 
-export default function ShopDetail({ product, id }: { product: Product, id: string }) {
+export default function ShopDetail({ product, id, similiar }: { product: Product, id: string, similiar: any }) {
     const router = useRouter()
     const { cart, setCart } = useContext(CartContext);
-
+    console.log(similiar)
     return (
         <main className="details">
             <div className="details__product">
@@ -35,6 +35,14 @@ export default function ShopDetail({ product, id }: { product: Product, id: stri
                     </div>
                 </div>
             </div>
+            <div className="details__similiar">
+                <h1>Andre Produkter</h1>
+                <ul>
+                    {similiar.map((product: any) => (
+                        <Product key={product.id} {...product} image={product.image.url} />
+                    ))}
+                </ul>
+            </div>
         </main >
     )
 }
@@ -53,6 +61,7 @@ interface Product {
 
 interface Category {
     name: string;
+    products: Product[];
 }
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
@@ -70,6 +79,16 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
                 }
                 categories {
                     name
+                    products {
+                  	  id
+                      	name
+                        description
+                        price
+                        discount
+                        image {
+                            url
+                        }
+                  	}
                 }
             }
         }
@@ -83,7 +102,10 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
     return {
         props: {
             product: data.data.product,
-            id
+            similiar: data.data.product?.categories && data.data.product?.categories?.reduce((acc: any, item) => {
+                return [...acc, ...item.products]
+            }, []),
+            id,
         }
     }
 }
