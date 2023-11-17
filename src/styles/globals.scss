@@ -35,9 +35,3 @@ a {
         flex: 1;
     }
 }
-
-html {
-    @media (min-width: $extra-large) {
-        font-size: 1.2rem !important;
-    }
-}

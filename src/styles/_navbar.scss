@@ -3,12 +3,17 @@
 .ournav {
     margin: 0 !important;
     z-index: 999 !important;
+
+    span {
+        color: gray !important;
+    }
+
     .link {
         padding: 8px !important;
     }
 
     a,
-    p,  
+    p,
     path {
         color: gray !important;
         font-size: 1rem !important;
@@ -20,8 +25,18 @@
 html {
     @media (min-width: $extra-large) {
         .ournav {
+            padding: 4rem 0 !important;
+
             img {
                 width: 80px;
+            }
+
+            a,
+            p,
+            span,
+            path,
+            svg {
+                font-size: 1.5rem !important;
             }
         }
     }

@@ -85,3 +85,20 @@ footer {
         }
     }
 }
+
+@media (min-width: $extra-large) {
+    footer {
+        padding: 5rem 10rem;
+
+        .footer__social {
+            li {
+                width: 5rem !important;
+                height: 5rem !important;
+            }
+        }
+
+        * {
+            font-size: 1.7rem !important;
+        }
+    }
+}
