@@ -8,7 +8,7 @@
     }
 
     .details__similiar--title {
-        font-size: 1.5rem !important;
+        font-size: 1.5rem;
         margin-left: 1rem;
         margin-top: 2rem;
     }
@@ -171,6 +171,10 @@
 }
 
 @media (min-width: $extra-large) {
+    .details__similiar--title {
+        font-size: 3rem !important;
+    }
+
     .details {
         h1 {
             font-size: 3rem !important;
@@ -185,6 +189,45 @@
         button {
             font-size: 2rem !important;
             padding: 1rem 2rem !important;
+        }
+    }
+
+    .details__similiar {
+        margin: 2rem;
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            color: gray;
+        }
+
+        ul {
+            div {
+                width: 400px !important;
+                min-width: 250px;
+
+                img {
+                    width: 100%;
+                    aspect-ratio: 1/1;
+                    border: 1px gray solid;
+                    margin-bottom: 1rem;
+                }
+
+                h1 {
+                    font-size: 1.5rem;
+                    margin-bottom: 1rem;
+                }
+
+                button {
+                    width: 100%;
+                    background-color: $secondary;
+                    padding: 0.5rem 2rem;
+                    margin-top: 2rem;
+                    border-radius: 3rem;
+                    color: white !important
+                }
+            }
+
         }
     }
 }
