@@ -1,10 +1,16 @@
 @import "_const.scss";
 
 .details {
+    .product__price {
+        font-weight: bold;
+        margin-top: 1rem;
+        color: gray;
+    }
+
     .details__product {
         display: flex;
         justify-content: space-around;
-        margin: 5rem 0;
+        margin: 1.5rem 0;
 
         &>div {
             display: flex;
@@ -28,11 +34,11 @@
             color: gray;
             font-weight: bold;
             margin-bottom: 2rem;
-            font-size: 1.5rem !important;
+            font-size: 1.5rem;
         }
 
         h2 {
-            font-size: 1.8rem !important;
+            font-size: 1.8rem;
             font-weight: normal;
             margin-bottom: 3rem;
         }
@@ -45,7 +51,7 @@
 
     .details__product--price {
         p {
-            font-size: 1.5rem !important;
+            font-size: 1.5rem;
             font-weight: bold;
             margin-bottom: 2rem;
             color: gray;
@@ -60,10 +66,10 @@
     }
 
     .details__similiar {
-        margin: 5rem;
+        margin: 1rem;
 
         h1 {
-            font-size: 2rem !important;
+            font-size: 2rem;
             margin-bottom: 3rem;
             color: gray;
         }
@@ -72,35 +78,35 @@
             display: flex;
             width: 100%;
             overflow-x: scroll;
-            padding: 1rem;
+            padding: 0.5rem;
             gap: 2rem;
 
             div {
-                padding: 1rem;
                 width: 300px;
+                min-width: 250px;
+
+                img {
+                    width: 100%;
+                    aspect-ratio: 1/1;
+                    border: 1px gray solid;
+                    margin-bottom: 1rem;
+                }
+
+                h1 {
+                    font-size: 1.5rem;
+                    margin-bottom: 1rem;
+                }
+
+                button {
+                    width: 100%;
+                    background-color: $secondary;
+                    padding: 0.5rem 2rem;
+                    margin-top: 2rem;
+                    border-radius: 3rem;
+                    color: white !important
+                }
             }
 
-            img {
-                width: 100%;
-                aspect-ratio: 1/1;
-                border: 1px gray solid;
-                margin-bottom: 1rem;
-            }
-
-            h1 {
-                font-size: 1.5rem !important;
-                margin-bottom: 1rem;
-
-            }
-
-            button {
-                width: 100%;
-                background-color: $secondary;
-                padding: 0.5rem 2rem;
-                margin-top: 2rem;
-                border-radius: 3rem;
-                color: white !important
-            }
         }
     }
 }
@@ -154,6 +160,25 @@
                     width: 100%;
                 }
             }
+        }
+    }
+}
+
+@media (min-width: $extra-large) {
+    .details {
+        h1 {
+            font-size: 3rem !important;
+        }
+
+        h2,
+        p {
+            font-size: 2rem !important;
+            margin-bottom: 1rem;
+        }
+
+        button {
+            font-size: 2rem !important;
+            padding: 1rem 2rem !important;
         }
     }
 }

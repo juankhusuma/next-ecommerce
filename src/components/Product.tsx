@@ -19,7 +19,7 @@ export const Product: React.FC<ProductProps> = ({ id, image, description, name, 
             <img src={image} alt={name} />
             <h1>{name}</h1>
             <p>{description.length > 100 ? description.slice(0, 100) + "..." : description}</p>
-            <p>{price} kr</p>
+            <p className="product__price">{price} kr</p>
             {(user !== null && !loading) &&
                 <button
                     onClick={(e) => {
