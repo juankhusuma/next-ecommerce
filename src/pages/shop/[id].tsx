@@ -40,7 +40,7 @@ export default function ShopDetail({ product, id, similiar }: { product: Product
                 <h1 className="details__similiar--title">Andre Produkter</h1>
                 <ul>
                     {similiar.map((product: any) => (
-                        <Link href={`${product.id}`}><Product key={product.id} {...product} image={product.image.url} /></Link>
+                        <Link key={product.id} href={`${product.id}`}><Product key={product.id} {...product} image={product.image.url} /></Link>
                     ))}
                 </ul>
             </div>
