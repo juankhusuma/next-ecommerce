@@ -7,6 +7,12 @@
         color: gray;
     }
 
+    .details__similiar--title {
+        font-size: 1.5rem !important;
+        margin-left: 1rem;
+        margin-top: 2rem;
+    }
+
     .details__product {
         display: flex;
         justify-content: space-around;
@@ -66,7 +72,7 @@
     }
 
     .details__similiar {
-        margin: 1rem;
+        margin: 2rem;
 
         h1 {
             font-size: 2rem;
