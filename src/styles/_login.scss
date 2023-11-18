@@ -100,12 +100,18 @@
                 margin-bottom: 5rem;
             }
 
+            input {
+                padding: 1rem 2rem;
+            }
+
             input[type="text"] {
                 margin-bottom: 3.5rem;
             }
 
             input[type="submit"] {
-                margin-top: 5rem;
+                margin-top: 3rem;
+                padding: 1rem;
+                width: 300px;
             }
 
             margin-bottom: 5rem;
