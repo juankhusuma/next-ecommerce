@@ -240,7 +240,7 @@
 
     .hero {
         .hero__text {
-            padding: 8rem;
+            padding: 0 3rem;
 
             h1 {
                 font-size: 3rem !important;
@@ -252,15 +252,6 @@
 
             div {
                 margin-bottom: 4rem;
-            }
-        }
-
-        .hero__carousel {
-            height: auto;
-            width: 50%;
-
-            img {
-                height: 1024px !important;
             }
         }
     }
