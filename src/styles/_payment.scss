@@ -100,6 +100,16 @@
                 display: flex;
                 flex-direction: column !important;
                 align-items: flex-start !important;
+
+                p {
+                    display: flex;
+                    flex-direction: column !important;
+                    align-items: flex-start !important;
+
+                    input {
+                        margin: 1rem 0 !important;
+                    }
+                }
             }
 
         }
@@ -116,6 +126,24 @@
                     font-size: 0.8rem;
                 }
             }
+        }
+    }
+}
+
+@media (min-width: $extra-large) {
+    .payment {
+
+        h1 {
+            font-size: 3.5rem !important;
+        }
+
+        p,
+        a,
+        span,
+        button,
+        input,
+        td {
+            font-size: 1.5rem !important;
         }
     }
 }

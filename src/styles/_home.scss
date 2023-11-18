@@ -19,6 +19,7 @@
 
         div {
             width: min-content;
+
         }
 
         h1,
@@ -50,8 +51,12 @@
 
     .hero__carousel {
         width: 50%;
-        object-fit: cover;
+        object-fit: scale-down;
         object-position: center !important;
+
+        img {
+            object-fit: scale-down;
+        }
     }
 }
 
@@ -85,6 +90,10 @@
 }
 
 .body {
+    img {
+        object-fit: cover;
+    }
+
     &>div {
         display: flex;
 
@@ -219,25 +228,51 @@
 }
 
 @media (min-width: $extra-large) {
-    p {
-        font-size: 1.5rem !important;
+    .home {
+        p {
+            font-size: 1.5rem !important;
+        }
+
+        h1 {
+            font-size: 6rem !important;
+        }
     }
 
     .hero {
         .hero__text {
-            padding: 5rem;
+            padding: 8rem;
 
+            h1 {
+                font-size: 3rem !important;
+            }
+
+            p {
+                font-size: 2rem !important;
+            }
+
+            div {
+                margin-bottom: 4rem;
+            }
         }
-    }
 
-    h1 {
-        font-size: 6rem !important;
+        .hero__carousel {
+            height: auto;
+            width: 50%;
+
+            img {
+                height: 1024px !important;
+            }
+        }
     }
 
     .strip {
         grid-template-columns: repeat(3, 1fr);
         gap: 2rem;
         padding: 2rem 0;
+
+        p {
+            font-size: 2rem !important;
+        }
     }
 
     .body {
@@ -252,14 +287,18 @@
 
                 h1 {
                     &:nth-child(1) {
-                        font-size: 1rem !important;
+                        font-size: 2rem !important;
                     }
 
                     &:nth-child(2) {
-                        font-size: 3rem !important;
+                        font-size: 5rem !important;
                         font-weight: 600;
                         margin-bottom: 2rem;
                     }
+                }
+
+                p {
+                    font-size: 2rem !important;
                 }
             }
         }

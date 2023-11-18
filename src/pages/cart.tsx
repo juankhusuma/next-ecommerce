@@ -33,8 +33,8 @@ export default function Cart() {
                     {cart.map((item, index) => (<CartItem key={index} {...item} index={item.id} />))}
                 </ul>
                 <div className='cart__info--price'>
-                    <p>Total</p>
-                    <p>{total} kr</p>
+                    <p className='price'>Total</p>
+                    <p className='price'>{total} kr</p>
                 </div>
                 <div className='cart__info--total'>
                     <button onClick={async () => {

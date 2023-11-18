@@ -87,3 +87,34 @@
         }
     }
 }
+
+@media (min-width: $extra-large) {
+    .login {
+        a {
+            font-size: 2rem !important;
+        }
+
+        form {
+            h1 {
+                font-size: 5rem !important;
+                margin-bottom: 5rem;
+            }
+
+            input[type="text"] {
+                margin-bottom: 3.5rem;
+            }
+
+            input[type="submit"] {
+                margin-top: 5rem;
+            }
+
+            margin-bottom: 5rem;
+        }
+
+        input,
+        p,
+        a {
+            font-size: 2rem !important;
+        }
+    }
+}

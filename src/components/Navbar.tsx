@@ -53,9 +53,11 @@ export default function OurNavbar() {
                         </NavDropdown>
                     </Nav>
                     <Nav>
-                        <div className="d-flex justify-center flex-column align-items-center">
-                            <BsCart3 className="mb-2" />
-                            <Link href="/cart">Handlekurv ({cart.length})</Link>
+                        <div className="d-flex cart-link justify-center flex-column align-items-start">
+                            <div className="d-flex flex-column align-items-center">
+                                <BsCart3 className="mb-2" />
+                                <Link href="/cart">Handlekurv ({cart.length})</Link>
+                            </div>
                         </div>
                     </Nav>
                 </Navbar.Collapse>
