@@ -40,6 +40,10 @@ export default function Cart() {
                     <button onClick={async () => {
                         setLoadingCart(true);
                         const { data } = await axios.post('/api/saveBill', { uid: user?.uid, price: total });
+                        cart.forEach(async (item) => {
+                            console.log(item.id)
+                            await axios.post('/api/createItem', { uid: user?.uid, id: item.id, amount: item.amount, price: item.price }).catch(err => console.log(err))
+                        });
                         setLoadingCart(false);
                         console.log(data);
                         if (data.success) {

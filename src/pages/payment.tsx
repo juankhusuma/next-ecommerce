@@ -9,6 +9,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 export default function Payment() {
     const [user, loading, error] = useAuthState(auth);
     const [data, setData] = useState([]);
+    const [item, setItem] = useState([]);
     const [name, setName] = useState('');
     const [phone, setPhone] = useState('');
     const [email, setEmail] = useState('');
@@ -25,6 +26,7 @@ export default function Payment() {
             if (!user) return;
             const { data } = await axios.post('/api/getBill', { uid: user?.uid });
             setData(data.data.data.purchases || []);
+            setItem(data.data.data.items || []);
             setName(user.displayName || '');
             setEmail(user.email || '');
 
@@ -84,6 +86,26 @@ export default function Payment() {
                                 } price={item.price} />
                             ))
                         }
+                    </tbody>
+                </table>
+                <table>
+                    <thead>
+                        <tr>
+                            <td>Produkt</td>
+                            <td>Pris</td>
+                            <td>Mengde</td>
+                            <td>Total</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {item.map((item: any) => (
+                            <tr key={item.id}>
+                                <td>{item.product.name}</td>
+                                <td>{item.price} kr</td>
+                                <td>{item.amount}</td>
+                                <td>{item.price * item.amount} kr</td>
+                            </tr>
+                        ))}
                     </tbody>
                 </table>
             </section>
