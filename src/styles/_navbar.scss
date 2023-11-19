@@ -24,11 +24,19 @@
 
 }
 
-@media (max-width: $tablet) {
+@media (max-width: 1000px) {
     .ournav {
-        background: #000;
+        .cart-icon {
+            display: none !important;
+        }
+
+        .nav-icon {
+            margin-top: 10px !important;
+        }
     }
 }
+
+
 
 // large devices
 html {
