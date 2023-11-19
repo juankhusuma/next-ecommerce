@@ -34,8 +34,6 @@
         }
     }
 
-
-
     .shop__products {
         margin: 5rem auto;
         display: grid;
@@ -53,6 +51,7 @@
                 background-color: $secondary;
                 padding: 0.5rem 2rem;
                 border-radius: 3rem;
+                max-width: 100px;
             }
 
             h1 {
@@ -68,6 +67,8 @@
             h1,
             p {
                 margin-bottom: 1rem;
+                line-height: 1.2rem !important;
+                margin-bottom: 0.7rem;
             }
 
             img {
@@ -112,9 +113,17 @@
     }
 }
 
+@media (max-width: $tablet) {
+
+    p {
+        font-size: 0.8rem !important;
+    }
+}
+
 @media screen and (max-width: 500px) {
     .shop {
         .shop__products {
+
             grid-template-columns: repeat(1, 1fr);
         }
     }

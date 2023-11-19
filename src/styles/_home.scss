@@ -6,6 +6,7 @@
 
     p {
         font-size: 1rem;
+        line-height: 1.15rem !important;
     }
 
     .hero__text {
@@ -96,6 +97,11 @@
     &>div {
         display: flex;
 
+        p {
+            line-height: 1.15rem !important;
+            margin-bottom: 0.7rem;
+        }
+
         &:nth-of-type(even) {
             flex-direction: row-reverse;
         }
@@ -105,7 +111,7 @@
 
             h1,
             p {
-                color: white
+                color: white;
             }
         }
 
@@ -142,13 +148,14 @@
             display: flex;
             flex-direction: column;
             justify-content: space-around;
-            align-items: center;
+            align-items: start;
             width: 100%;
 
             h1,
             h2,
             p {
-                margin-bottom: -0.5rem;
+                margin-bottom: 0.8rem;
+                font-size: 0.8rem !important;
             }
 
             h1 {
@@ -168,6 +175,8 @@
 
             p {
                 margin-top: 2rem;
+                font-size: 0.8rem !important;
+                line-height: 1rem !important;
             }
         }
 
@@ -189,6 +198,11 @@
 
     .body {
         &>div {
+            p {
+                font-size: 0.8rem !important;
+                line-height: 1rem !important;
+            }
+
             flex-direction: column;
 
             &:nth-of-type(even) {

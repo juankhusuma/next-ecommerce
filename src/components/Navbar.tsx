@@ -44,6 +44,8 @@ export default function OurNavbar() {
                             <NavDropdown.Item href="#" onClick={async () => {
                                 if (userLoad) {
                                     await signOut(auth);
+                                    setUserLoad(false);
+                                    await router.push("/login");
                                 } else {
                                     await router.push("/login")
                                 }
