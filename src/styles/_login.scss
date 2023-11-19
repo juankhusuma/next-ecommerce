@@ -2,6 +2,7 @@
 
 .login {
     display: flex;
+    justify-content: center;
 
     form {
         width: 50%;
@@ -58,6 +59,7 @@
 
 @media (max-width: $tablet) {
     .login {
+        justify-content: start;
         flex-direction: column-reverse;
 
         form {
@@ -95,8 +97,10 @@
         }
 
         form {
+            width: 30%;
+
             h1 {
-                font-size: 5rem !important;
+                font-size: 2rem !important;
                 margin-bottom: 5rem;
             }
 
@@ -117,10 +121,15 @@
             margin-bottom: 5rem;
         }
 
+        img {
+            width: 40%;
+            max-height: 1000px;
+        }
+
         input,
         p,
         a {
-            font-size: 2rem !important;
+            font-size: 1.2rem !important;
         }
     }
 }

@@ -5,7 +5,6 @@ import { GetServerSideProps } from "next";
 import { AiOutlineSearch } from 'react-icons/ai';
 import axios from "axios";
 import Link from "next/link";
-import { CartContext } from "@/context/CartContext";
 
 export default function Shop({ products, categories }: { products: P[], categories: { name: string }[] }) {
     const [tag, setTag] = useState<string>("all");
@@ -30,7 +29,7 @@ export default function Shop({ products, categories }: { products: P[], categori
                 </div>
                 <section className="shop__nav--categories">
                     <select value={tag} onChange={e => setTag(e.target.value)}>
-                        <option value="all">All</option>
+                        <option value="all">Categories</option>
                         {categories.map(category => {
                             return <option key={category.name} value={category.name}>{category.name}</option>
                         })}

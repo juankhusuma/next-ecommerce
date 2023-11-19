@@ -2,6 +2,7 @@
 
 .about {
     display: flex;
+    justify-content: center;
     padding: 4rem;
 
     img {
@@ -24,12 +25,12 @@
 @media (max-width: $tablet) {
     .about {
         flex-direction: column;
-        padding: 2rem;
+        padding: 0;
 
         img {
             width: 100%;
             padding: 0;
-            height: 500px;
+            height: 400px;
             margin-bottom: 2rem;
             padding: 0;
             object-position: center;
@@ -37,10 +38,9 @@
 
         section {
             width: 100%;
-            padding: 0.5rem;
+            padding: 2rem;
 
             h1 {
-                text-align: center;
                 font-size: 2rem !important;
             }
         }
@@ -49,12 +49,16 @@
 
 @media (min-width: $extra-large) {
     .about {
+        img {
+            max-height: 1000px;
+        }
+
         h1 {
-            font-size: 3rem !important;
+            font-size: 2rem !important;
         }
 
         p {
-            font-size: 2rem !important;
+            font-size: 1rem !important;
         }
     }
 }

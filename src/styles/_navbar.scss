@@ -12,10 +12,6 @@
         padding-left: 8px !important;
     }
 
-    span {
-        color: gray !important;
-    }
-
     .link {
         padding: 8px !important;
     }
@@ -23,10 +19,15 @@
     a,
     p,
     path {
-        color: gray !important;
         font-size: 1rem !important;
     }
 
+}
+
+@media (max-width: $tablet) {
+    .ournav {
+        background: #000;
+    }
 }
 
 // large devices
@@ -39,12 +40,8 @@ html {
                 width: 80px;
             }
 
-            a,
-            p,
-            span,
-            path,
             svg {
-                font-size: 1.5rem !important;
+                font-size: 2.3rem !important;
             }
         }
     }

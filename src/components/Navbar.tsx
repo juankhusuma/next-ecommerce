@@ -54,7 +54,7 @@ export default function OurNavbar() {
                     </Nav>
                     <Nav>
                         <div className="d-flex cart-link justify-center flex-column align-items-start">
-                            <div className="d-flex flex-column align-items-center">
+                            <div className="d-flex flex-column align-items-center nav-icon">
                                 <BsCart3 className="mb-2" />
                                 <Link href="/cart">Handlekurv ({cart.length})</Link>
                             </div>
